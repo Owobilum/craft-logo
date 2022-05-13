@@ -61,6 +61,8 @@ function CheckoutForm() {
             </div>}
 
             {errorMessage && <div className='alert alert-danger mb-3'><div className='container'>{errorMessage}</div></div>}
+            {!isCompleted &&
+            <>
             <PaymentElement />
             <br />
             <center>
@@ -68,6 +70,8 @@ function CheckoutForm() {
                     {loading?'Loading...':'Confirm order'}
                 </button>
             </center>
+            </>
+                }
         </form>
     );
 };
