@@ -8,8 +8,7 @@ import Addons from './pages/addons';
 import Review from './pages/review';
 import Payment from './pages/payment';
 import Faqs from './pages/faqs';
-
-
+import Admin from './pages/admin/Admin';
 
 function App() {
   return <Router>
@@ -21,6 +20,7 @@ function App() {
       <Route exact path='/review-order' element={<Review />} />
       <Route exact path='/payment' element={<Payment />} />
       <Route exact path='/faqs' element={<Faqs />} />
+      <Route exact path='/admin' element={<Admin />} />
     </Routes>
   </Router>;
 }

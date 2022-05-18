@@ -34,7 +34,9 @@ function Nav(props) {
                     <li className="nav-item">
                         <a className="nav-link" style={{ fontWeight: '700', fontSize: '18px' }} href="/addons">Addons</a>
                     </li>
-
+                    <li className="nav-item">
+                        <a className="nav-link" style={{ fontWeight: '700', fontSize: '18px' }} href="/admin">Admin</a>
+                    </li>
                 </ul>
 
                 <form onClick={handleSubmit} className="form-inline my-2 my-lg-0 ms-auto">
