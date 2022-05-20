@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useNavigate } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 
 import CheckoutForm from '../components/checkoutform';
 import Nav from '../components/nav';
@@ -61,7 +62,8 @@ function Stripe() {
     },[])
 
     if(!secret && !error){
-        return <h3 style={{marginTop:32,textAlign:'center'}}>Please wait...</h3>
+        return <h3 style={{marginTop:32,textAlign:'center'}}>
+            Loading, please wait... <Spinner animation="border" /></h3>
     }
 
 
