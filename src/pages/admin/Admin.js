@@ -4,6 +4,7 @@ import { Spinner, Modal, Button } from 'react-bootstrap'
 import styles from './Admin.module.css'
 import Nav from '../../components/nav'
 import logo from '../../assets/images/logo.png'
+import { baseUrl } from '../../App'
 
 const CenteredModal = (props) => {
   const { mark, id } = props
@@ -68,7 +69,7 @@ function Admin() {
       try {
         setIsLoading(true)
         const response = await fetch(
-          `https://craft-logo-backend.herokuapp.com/api/all-orders?page=${page}&${params}`
+          `${baseUrl}/all-orders?page=${page}&${params}`
         )
         const {
           data: { data, current_page, last_page }
@@ -98,7 +99,7 @@ function Admin() {
       setIsLoading(true)
       try {
         const response = await fetch(
-          'https://craft-logo-backend.herokuapp.com/api/verify_passcode',
+          `${baseUrl}/verify_passcode`,
           {
             method: 'POST',
             headers: {
@@ -137,7 +138,7 @@ function Admin() {
     try {
       setIsLoading(true)
       const response = await fetch(
-        `https://craft-logo-backend.herokuapp.com/api/complete_order/${id}?passcode=${passcode}`
+        `${baseUrl}/complete_order/${id}?passcode=${passcode}`
       )
       if (response.status === 200) {
         setMessage('Order Marked as Fulfilled')
@@ -332,6 +333,10 @@ function Admin() {
                     )
                   }
                 )}
+
+                {
+                  orders?.length === 0 && <tr><td>No orders found</td></tr>
+                }
               </tbody>
             </table>
           </div>

@@ -10,6 +10,8 @@ import Payment from './pages/payment';
 import Faqs from './pages/faqs';
 import Admin from './pages/admin/Admin';
 
+export const baseUrl = "http://api-backend.thecraftlogo.com/api"
+
 function App() {
   return <Router>
     <Routes>

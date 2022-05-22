@@ -9,6 +9,7 @@ import Nav from '../components/nav';
 import Footer from '../components/footer';
 import '../assets/style/App.css';
 import logo from '../assets/images/logo.png';
+import { baseUrl } from '../App';
 
 const PUBLIC_KEY = "pk_test_51Kv1hhGrAkA0etTmJUMq9sMFXMQbLKpyr0FaJnqDDhP75jFC5xn3RsWk3yKrA1wAdMgqR6PD3lj5iLDqloeQQUiO00OpnsEM5n"
 
@@ -29,7 +30,7 @@ function Stripe() {
 
     const handleInitiateTransaction = async ()=>{
             try{
-                const {error: backendError, data:{clientSecret}} = await fetch('https://craft-logo-backend.herokuapp.com/api/order_payment',{
+                const {error: backendError, data:{clientSecret}} = await fetch(`${baseUrl}/order_payment`,{
                         method:'POST',
                         headers:{
                             'Content-type':'application/json',
