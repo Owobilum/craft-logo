@@ -26,8 +26,9 @@ function Gallery() {
     const [show, setShow] = useState(false);
     const [currentDesign, setDesign] = useState(null);
 
-    const selectDesign = (value) => {
-        setDesign(value);
+    const selectDesign = ({image,id}) => {
+        setDesign(image);
+        sessionStorage.setItem('selectedFont',id)
         handleShow();
     };
 
@@ -35,7 +36,18 @@ function Gallery() {
     const handleShow = () => setShow(true);
 
     const images = [
-        gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9, gallery10, gallery11, gallery12,
+        {id:1,image:gallery1},
+        {id:2, image:gallery2},
+        {id:3, image:gallery3},
+        {id:4, image:gallery4},
+        {id:5, image:gallery5},
+        {id:6, image:gallery6},
+        {id:7, image: gallery7},
+        {id:8, image:gallery8},
+        {id:9,image:gallery9},
+        {id:10, image:gallery10},
+        {id:11, image:gallery11},
+        {id:12, image:gallery12},
     ];
 
     return <>
@@ -48,9 +60,9 @@ function Gallery() {
                 <div className='container'>
                     <div className='row'>
                         {
-                            images.map((image, key) => {
-                                return <div className='col-md-6 mb-3'>
-                                    <a href='#' onClick={() => selectDesign(image)}>
+                            images.map(({image,id}, key) => {
+                                return <div className='col-md-6 mb-3' key={id}>
+                                    <a href='#' onClick={() => selectDesign({image,id})}>
                                         {
                                             key % 2 === 0
                                                 ? <img src={image} className="img-fluid" style={{ float: 'right' }} />
@@ -80,7 +92,12 @@ function Gallery() {
                 </center>
             </Modal.Body>
             <Modal.Footer>
-                <a href='/order-logo' style={{ padding: "13px", borderRadius: '100px' }} className='btn btn-dark'>Order this design &raquo;</a>
+                <a 
+                    href={sessionStorage.getItem('logoName') ?
+                        `/order-logo?name=${sessionStorage.getItem('logoName')}`:
+                        `/order-logo`
+                    } 
+                    style={{ padding: "13px", borderRadius: '100px' }} className='btn btn-dark'>Order this design &raquo;</a>
             </Modal.Footer>
         </Modal>
     </>

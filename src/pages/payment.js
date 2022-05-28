@@ -36,7 +36,7 @@ function Stripe() {
                             'Content-type':'application/json',
                         },
                         body:JSON.stringify({
-                            name: logoOrder && logoOrder.logo,
+                            name: logoOrder && `${logoOrder.logo} - (Font ${sessionStorage.getItem('selectedFont')})` ,
                             tagline: logoOrder && logoOrder.tag,
                             email: logoOrder && logoOrder.email,
                             amount: isChecked? 65 : 50,
