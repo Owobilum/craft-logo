@@ -5,7 +5,8 @@ function Nav(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        window.location.href = '/order-logo';
+        // window.location.href = '/order-logo';
+        window.location.href = document.location.href + `gallery`
     }
 
     return <nav className="navbar navbar-light navbar-expand-lg bg-light navbar-expand-lg justifty-content-between fixed-top">

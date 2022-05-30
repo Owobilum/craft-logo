@@ -39,7 +39,7 @@ function Stripe() {
                             name: logoOrder && `${logoOrder.logo} - (Font ${sessionStorage.getItem('selectedFont')})` ,
                             tagline: logoOrder && logoOrder.tag,
                             email: logoOrder && logoOrder.email,
-                            amount: isChecked? 65 : 50,
+                            amount: isChecked === 'true'? 65 : 50,
                             phone: logoOrder && logoOrder.phone,
                             email_confirmation: logoOrder && logoOrder.email
                         })
