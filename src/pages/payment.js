@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useNavigate } from 'react-router-dom';
-import { Spinner } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 
 import CheckoutForm from '../components/checkoutform';
 import Nav from '../components/nav';
@@ -10,6 +10,7 @@ import Footer from '../components/footer';
 import '../assets/style/App.css';
 import logo from '../assets/images/logo.png';
 import { baseUrl } from '../App';
+import styles from './admin/Admin.module.css'
 
 const PUBLIC_KEY = "pk_test_51Kv1hhGrAkA0etTmJUMq9sMFXMQbLKpyr0FaJnqDDhP75jFC5xn3RsWk3yKrA1wAdMgqR6PD3lj5iLDqloeQQUiO00OpnsEM5n"
 
@@ -77,7 +78,13 @@ function Stripe() {
         <section className='mt-5 mb-5' style={{ minHeight: '75vh' }}>
             <div className='container'>
                 <br />
-                {error && <div className='alert alert-danger mb-3'><div className='container'>{error}</div></div>}
+                {error && <div className='alert alert-danger mb-3'><div className='container'>
+                    <span style={{marginRight:16}}>
+                        An error occured. Please check your internet connection and try again.</span>
+                    <button style={{fontSize: 16}} className={styles.btn} onClick={()=>navigate(-1)}>
+                        Try Again
+                    </button>
+                    </div></div>}
 
                 <div className='row justify-content-md-center'>
                     <div className='col-md-5'>
